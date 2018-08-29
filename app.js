@@ -63,7 +63,7 @@ bot.on('message', (msg) => {
     bot.sendMessage(chatId, ':3');
 
   }, 2000);
-};
+}
   
 
 });
