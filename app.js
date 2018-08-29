@@ -55,9 +55,9 @@ bot.onText(/\/what/, (msg, match) => {
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
   if(msg.text.charAt(0) !== '/') {
+    bot.sendChatAction(chatId, 'typing');
     setTimeout(function () {
     bot.sendMessage(chatId, ':3');
-
   }, 2000);
 }
   
