@@ -7,59 +7,34 @@ const token = process.env.TOKEN;
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
-// Matches "/echo [whatever]"
+
+function sendMessage (chatId, resp) {
+  bot.sendChatAction(chatId, 'typing');
+  setTimeout(function () {
+    bot.sendMessage(chatId, resp);
+  }, 2000);
+}
+
+
 bot.onText(/\/nihao/, (msg, match) => {
-  // 'msg' is the received Message from Telegram
-  // 'match' is the result of executing the regexp above on the text content
-  // of the message
-
-  const chatId = msg.chat.id;
-  const resp = '◉◡◉✿'; // the captured "whatever"
-
-  // send back the matched "whatever" to the chat
-  bot.sendMessage(chatId, resp);
+  sendMessage(msg.chat.id, '◉◡◉✿');
 });
 
 bot.onText(/\/sad/, (msg, match) => {
-  // 'msg' is the received Message from Telegram
-  // 'match' is the result of executing the regexp above on the text content
-  // of the message
-
-  const chatId = msg.chat.id;
-  const resp = '(ಥ_ಥ)'; // the captured "whatever"
-
-  // send back the matched "whatever" to the chat
-  bot.sendMessage(chatId, resp);
+  sendMessage(msg.chat.id, '(ಥ_ಥ)');
 });
 
 bot.onText(/\/nya/, (msg, match) => {
-  // 'msg' is the received Message from Telegram
-  // 'match' is the result of executing the regexp above on the text content
-  // of the message
-
-  const chatId = msg.chat.id;
-  const resp = '◕‿‿◕✿'; // the captured "whatever"
-
-  // send back the matched "whatever" to the chat
-  bot.sendMessage(chatId, resp);
+  sendMessage(msg.chat.id, '◕‿‿◕✿');
 });
 
 bot.onText(/\/what/, (msg, match) => {
-  const chatId = msg.chat.id;
-  const resp = '¯\\_(ツ)_/¯'; // the captured "whatever"
-
-  bot.sendMessage(chatId, resp);
+  sendMessage(msg.chat.id, '¯\\_(ツ)_/¯');
 });
 
 
 bot.on('message', (msg) => {
-  const chatId = msg.chat.id;
   if(msg.text.charAt(0) !== '/') {
-    bot.sendChatAction(chatId, 'typing');
-    setTimeout(function () {
-    bot.sendMessage(chatId, ':3');
-  }, 2000);
-}
-  
-
+    sendMessage(msg.chat.id, ':3');
+  }
 });
