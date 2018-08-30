@@ -7,8 +7,7 @@ const token = process.env.TOKEN;
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
-var arrEmoji;
-arrEmoji = [
+var arrEmoji = [
   '◉◡◉✿',
   '(ಥ_ಥ)',
   '◕‿‿◕✿',
