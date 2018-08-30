@@ -14,6 +14,10 @@ var arrEmoji = [
   '¯\\_(ツ)_/¯'
 ];
 
+function randomTimer(min, max) {
+  return Math.floor(min + Math.random() * (max + 1 - min));
+}
+
 function sendMessage (chatId, resp, time) {
   bot.sendChatAction(chatId, 'typing');
   setTimeout(function () {
@@ -22,23 +26,23 @@ function sendMessage (chatId, resp, time) {
 }
 
 bot.onText(/\/nihao/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[0], 2000);
+  sendMessage(msg.chat.id, arrEmoji[0], randomTimer(500, 2000));
 });
 
 bot.onText(/\/sad/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[1], 2000);
+  sendMessage(msg.chat.id, arrEmoji[1], randomTimer(500, 2000));
 });
 
 bot.onText(/\/nya/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[2], 2000);
+  sendMessage(msg.chat.id, arrEmoji[2], randomTimer(500, 2000));
 });
 
 bot.onText(/\/what/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[3], 2000);
+  sendMessage(msg.chat.id, arrEmoji[3], randomTimer(500, 2000));
 });
 
 bot.on('message', (msg) => {
   if(msg.text.charAt(0) !== '/') {
-    sendMessage(msg.chat.id, ':3', 2000);
+    sendMessage(msg.chat.id, ':3', randomTimer(500, 2000));
   }
 });
