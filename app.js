@@ -7,34 +7,38 @@ const token = process.env.TOKEN;
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
+var arrEmoji = [
+  '◉◡◉✿',
+  '(ಥ_ಥ)',
+  '◕‿‿◕✿',
+  '¯\\_(ツ)_/¯'
+];
 
-function sendMessage (chatId, resp) {
+function sendMessage (chatId, resp, time) {
   bot.sendChatAction(chatId, 'typing');
   setTimeout(function () {
     bot.sendMessage(chatId, resp);
-  }, 2000);
+  }, time);
 }
 
-
 bot.onText(/\/nihao/, (msg, match) => {
-  sendMessage(msg.chat.id, '◉◡◉✿');
+  sendMessage(msg.chat.id, arrEmoji[0], 2000);
 });
 
 bot.onText(/\/sad/, (msg, match) => {
-  sendMessage(msg.chat.id, '(ಥ_ಥ)');
+  sendMessage(msg.chat.id, arrEmoji[1], 2000);
 });
 
 bot.onText(/\/nya/, (msg, match) => {
-  sendMessage(msg.chat.id, '◕‿‿◕✿');
+  sendMessage(msg.chat.id, arrEmoji[2], 2000);
 });
 
 bot.onText(/\/what/, (msg, match) => {
-  sendMessage(msg.chat.id, '¯\\_(ツ)_/¯');
+  sendMessage(msg.chat.id, arrEmoji[3], 2000);
 });
-
 
 bot.on('message', (msg) => {
   if(msg.text.charAt(0) !== '/') {
-    sendMessage(msg.chat.id, ':3');
+    sendMessage(msg.chat.id, ':3', 2000);
   }
 });
