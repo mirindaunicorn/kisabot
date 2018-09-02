@@ -53,11 +53,6 @@ bot.onText(/\/list/, (msg, match) => {
 
 bot.on('message', (msg) => {
   if(msg.text.charAt(0) !== '/') {
-<<<<<<< HEAD
-    sendMessage(msg.chat.id, ':3', randomTimer(500, 2000));
-=======
-    sendMessage(msg.chat.id, arrEmoji[4], 2000);
-    bot.sendMessage(msg.chat.id, '1');
->>>>>>> master
+    sendMessage(msg.chat.id, arrEmoji[4], randomTimer(500, 2000));
   }
 });
