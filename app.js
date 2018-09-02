@@ -11,7 +11,8 @@ var arrEmoji = [
   '◉◡◉✿',
   '(ಥ_ಥ)',
   '◕‿‿◕✿',
-  '¯\\_(ツ)_/¯'
+  '¯\\_(ツ)_/¯',
+  ':3'
 ];
 
 function randomTimer(min, max) {
@@ -41,8 +42,22 @@ bot.onText(/\/what/, (msg, match) => {
   sendMessage(msg.chat.id, arrEmoji[3], randomTimer(500, 2000));
 });
 
+bot.onText(/\/list/, (msg, match) => {
+  var list = arrEmoji.slice().reverse();
+  for (let resp of list) {
+    if (resp !== ':3') {
+      bot.sendMessage(msg.chat.id, resp);
+    }
+  }
+});
+
 bot.on('message', (msg) => {
   if(msg.text.charAt(0) !== '/') {
+<<<<<<< HEAD
     sendMessage(msg.chat.id, ':3', randomTimer(500, 2000));
+=======
+    sendMessage(msg.chat.id, arrEmoji[4], 2000);
+    bot.sendMessage(msg.chat.id, '1');
+>>>>>>> master
   }
 });
