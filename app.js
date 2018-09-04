@@ -15,7 +15,20 @@ var arrEmoji = [
   ':3'
 ];
 
-function randomTimer(min, max) {
+var arrAnswers = [
+  'да, я тут:3',
+  'что-что? внимательно слушаю',
+  'я люблю котиков <3',
+  'ты такой няша^^',
+  'мяу-мяу, мрмрмрррр',
+  'すみません。',
+  'あなたは良い人です。',
+  'あなたはどうですか？',
+  '猫はすぐに世界を引き継ぐだろう。',
+  '私は人間になりたい。。。'
+];
+
+function randomInt(min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
 }
 
@@ -27,19 +40,19 @@ function sendMessage (chatId, resp, time) {
 }
 
 bot.onText(/\/nihao/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[0], randomTimer(500, 2000));
+  sendMessage(msg.chat.id, arrEmoji[0], randomInt(500, 2000));
 });
 
 bot.onText(/\/sad/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[1], randomTimer(500, 2000));
+  sendMessage(msg.chat.id, arrEmoji[1], randomInt(500, 2000));
 });
 
 bot.onText(/\/nya/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[2], randomTimer(500, 2000));
+  sendMessage(msg.chat.id, arrEmoji[2], randomInt(500, 2000));
 });
 
 bot.onText(/\/what/, (msg, match) => {
-  sendMessage(msg.chat.id, arrEmoji[3], randomTimer(500, 2000));
+  sendMessage(msg.chat.id, arrEmoji[3], randomInt(500, 2000));
 });
 
 bot.onText(/\/list/, (msg, match) => {
@@ -52,7 +65,19 @@ bot.onText(/\/list/, (msg, match) => {
 });
 
 bot.on('message', (msg) => {
-  if(msg.text.charAt(0) !== '/') {
-    sendMessage(msg.chat.id, arrEmoji[4], randomTimer(500, 2000));
-  }
+  var kisa = msg.text.match(/(Kisa|kisa|Kisabot|kisabot|bot|Bot|киса|кисабот|Киса|Кисабот|бот)/);
+  var resp = (kisa !== null)
+   ? arrAnswers[randomInt(0, arrAnswers.length-1)]
+   : arrEmoji[4];
+
+   /*if(a > 2) {
+     resp = 'foo';
+   } else {
+     resp = 'bar';
+   }
+
+   resp = (a > 2) ? 'foo' : 'bar';
+   */
+
+  sendMessage(msg.chat.id, resp, randomInt(500, 2000));
 });
