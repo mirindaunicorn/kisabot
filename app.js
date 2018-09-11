@@ -66,18 +66,23 @@ bot.onText(/\/list/, (msg, match) => {
 
 bot.on('message', (msg) => {
   var kisa = msg.text.match(/(Kisa|kisa|Kisabot|kisabot|bot|Bot|киса|кисабот|Киса|Кисабот|бот)/);
-  var resp = (kisa !== null)
+  /*var resp;*/
+   if ((kisa == null && msg.text.charAt(0) !== '/')) {
+     resp = arrEmoji[4];
+   } else if (kisa !== null) {
+     resp = arrAnswers[randomInt(0, arrAnswers.length-1)];
+   }
+  console.log (msg.text.charAt(0));
+  /*var resp = (kisa !== null)
    ? arrAnswers[randomInt(0, arrAnswers.length-1)]
-   : arrEmoji[4];
+   : arrEmoji[4];*/
 
    /*if(a > 2) {
      resp = 'foo';
    } else {
      resp = 'bar';
    }
-
-   resp = (a > 2) ? 'foo' : 'bar';
-   */
+   resp = (a > 2) ? 'foo' : 'bar';*/
 
   sendMessage(msg.chat.id, resp, randomInt(500, 2000));
 });
