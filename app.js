@@ -81,8 +81,8 @@ bot.onText(/\/list/, (msg, match) => {
 });
 
 bot.on('message', (msg) => {
-  var kisa = msg.text.match(/(Kisa|kisa|Kisabot|kisabot|bot|Bot|киса|кисабот|Киса|Кисабот|бот)/);
-  var kisa2 = msg.text.match(/kisa_dev_bot/);
+  var kisa = msg.text.match(/(Kisa|kisa|Kisabot|kisabot|bot|Bot|киса|кисабот|Киса|Кисабот|бот|киця|кіса|Кіса|кісабот)/);
+  var kisa2 = msg.text.match(/k1sa_bot/);
   /*added for command correctly working;
   *without it @kisa_dev_bot will send 2 messages - random answer and command answer*/
    if ((kisa == null && msg.text.charAt(0) !== '/' && kisa2 == null)) {
