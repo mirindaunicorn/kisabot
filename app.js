@@ -81,7 +81,7 @@ bot.onText(/\/list/, (msg, match) => {
 });
 
 bot.on('message', (msg) => {
-  var kisa = msg.text.match(/(Kisa|kisa|Kisabot|kisabot|bot|Bot|киса|кисабот|Киса|Кисабот|бот|киця|кіса|Кіса|кісабот)/);
+  var kisa = msg.text.match(/(Kisa|kisa|Kisabot|kisabot|bot|Bot|киса|кисабот|Киса|Кисабот|бот|киця|кіса|Кіса|кісабот|кицю)/);
   var kisa2 = msg.text.match(/k1sa_bot/);
   /*added for command correctly working;
   *without it @kisa_dev_bot will send 2 messages - random answer and command answer*/
@@ -90,6 +90,8 @@ bot.on('message', (msg) => {
    } else if (kisa !== null && kisa2 == null) {
     sendMessage(msg.chat.id, arrAnswers[randomInt(0, arrAnswers.length-1)], randomInt(500, 2000));
    }
+   
+   
   /*var resp = (kisa !== null) ? arrAnswers[randomInt(0, arrAnswers.length-1)] : arrEmoji[4];*/
 
    /*if(a > 2) {
