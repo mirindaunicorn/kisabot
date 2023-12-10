@@ -86,7 +86,7 @@ bot.on('message', (msg) => {
   /*added for command correctly working;
   *without it @kisa_dev_bot will send 2 messages - random answer and command answer*/
    if ((kisa == null && msg.text.charAt(0) !== '/' && kisa2 == null)) {
-    sendMessage(msg.chat.id, arrEmoji[4], randomInt(500, 2000));
+    // sendMessage(msg.chat.id, arrEmoji[4], randomInt(500, 2000));
    } else if (kisa !== null && kisa2 == null) {
     sendMessage(msg.chat.id, arrAnswers[randomInt(0, arrAnswers.length-1)], randomInt(500, 2000));
    }
