@@ -2,14 +2,20 @@
   "name": "kisabot",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "app.js",
   "dependencies": {
     "dotenv": "^6.0.0",
-    "node-telegram-bot-api": "^0.30.0"
+    "node-schedule": "^2.1.1",
+    "node-telegram-bot-api": "^0.63.0",
+    "sqlite3": "^5.0.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

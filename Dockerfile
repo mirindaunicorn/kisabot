@@ -1,17 +1,17 @@
-# Використовуємо офіційний образ Node.js
-FROM node:14
+FROM node:20
 
-# Вказуємо робочу директорію в контейнері
 WORKDIR /usr/src/app
 
-# Копіюємо package.json та package-lock.json
 COPY package*.json ./
+RUN  apt-get update  \
+     && apt-get install -y sqlite3 libsqlite3-dev  \
+     && cd /usr/src/app \
+     && touch databse.db \
+     && chmod 770 databse.db
 
-# Виконуємо npm install для встановлення залежностей
 RUN npm install
 
-# Копіюємо усі файли з поточного каталогу в контейнер
 COPY . .
 
-# Запускаємо ваш Telegram-бот
-CMD ["node", "app.js"]
+CMD ["sh", "-c", "node createDatabase.js && node scheduler.js && npm start"]
+
